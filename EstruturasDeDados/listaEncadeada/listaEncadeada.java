@@ -40,7 +40,25 @@ public class listaEncadeada {
 		this.tamanho++;
 	}
 	public void remover(String novoValor) {
-		
+		node anterior = null;
+		node atual = this.primeiro;
+		for(int i=0; i < this.getTamanho(); i++) {
+			if(this.tamanho ==1) {
+				this.primeiro = null;
+				this.ultimo = null;
+			}else if(atual == primeiro) {
+				this.primeiro = atual.getProximo();
+				atual.setProximo(null);
+			}else if(atual == ultimo) {
+				this.ultimo = anterior;
+				anterior.setProximo(null);
+			}else {
+				anterior.setProximo(atual.getProximo());
+				atual = null;
+			}
+			this.tamanho--;
+			break;
+		}
 	}
 	public node get(int posicao) {
 		node atual = this.primeiro;
